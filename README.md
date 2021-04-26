@@ -5,3 +5,6 @@ I currently use Python with pandas and math lib to consist a basic naive bayesia
 for more related imformation, please check wiki pedia below
 
 https://en.wikipedia.org/wiki/Naive_Bayes_classifier
+
+report:
+Apr/26: upload encoder() and hybird_discret() functions.
