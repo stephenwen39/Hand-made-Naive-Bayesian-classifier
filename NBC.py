@@ -207,11 +207,15 @@ class NBC(object):
             else:
               outter_dict[class_][attr_index][attr] += 1 # the count of this value of this attr + 1
               
-    for class_2 in outter_dict:
-      for attr_2 in outter_dict[class_2]:
-        for value in outter_dict[class_2][attr_2]:
-          outter_dict[class_2][attr_2][value] = outter_dict[class_2][attr_2][value] / (class_prob_pair[class_2] * train[index_attrs_class[-1]].count())
-          
+    ##### Laplace's Estimate
+    for class_1 in outter_dict:
+      for attr_2 in outter_dict[class_1]:
+        for value in range(0, 10):
+          if value not in outter_dict[class_1][attr_2]:
+            outter_dict[class_1][attr_2][value] = 1 / (class_prob_pair[class_1] * train[index_attrs_class[-1]].count())
+          else:
+            outter_dict[class_1][attr_2][value] = (outter_dict[class_1][attr_2][value]+1) / (class_prob_pair[class_1] * train[index_attrs_class[-1]].count())
+        
     
     ##### start to input the testing data
     flag_list = [] # if element is 1, means true predict, else false, use it to calculate the accuracy
