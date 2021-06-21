@@ -7,6 +7,8 @@ With:
 
 2. 5 fold cross validation in __init__, you can change it with other numbers like 10 or 2.
 
+3. Laplace's estimate is using with every possibally attributes value.
+
 Warning:
 
 1.Can't process the missing value
