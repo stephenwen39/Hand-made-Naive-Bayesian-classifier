@@ -1,4 +1,4 @@
-# Hand-made-Naive-Bayesian_classifier
+# Hand-made_Naive_Bayesian_classifier
 
 I currently use Python with pandas and numpy lib to consist a basic naive bayesian classifier .
 
