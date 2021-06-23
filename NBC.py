@@ -1,9 +1,7 @@
 import pandas as pd #inorder to read csv file
 import numpy as np
 import matplotlib.pyplot as plt
-#建議老師於此連結線上執行此檔案:https://colab.research.google.com/drive/1P0rV3dNKnGkuULwN4BlzUYUkWXGCCsnt?usp=sharing
-##### 若老師在您自己的IDE上執行此檔案而非線上colab執行，要麻煩您將下兩句code註解掉，並且更改檔案路徑
-from google.colab import drive
+from google.colab import drive # del it if not run it on google colab
 drive.mount('/content/drive', force_remount=True) 
 
 class NBC(object):
