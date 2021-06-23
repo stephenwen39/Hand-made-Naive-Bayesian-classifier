@@ -9,6 +9,8 @@ With:
 
 3. Laplace's estimate is using with every possibally attributes value.
 
+4. Dirichlet prior is using and testing after finish the SNB. 
+
 Warning:
 
 1.Can't process the missing value.
