@@ -24,6 +24,8 @@ https://en.wikipedia.org/wiki/Naive_Bayes_classifier
 Below is the example output with Pima dataset from UCI Machine Learning DB
 
 1. The discretization result
+
+(plz use the see_attrs_code_pair() function to see the original attribute name.)
 <p align="center"><img width="80%" src="dis_result.png" /></p>
 
 2. The SNB process with attribute and accuracy
