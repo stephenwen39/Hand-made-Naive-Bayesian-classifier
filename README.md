@@ -36,4 +36,4 @@ Below is the example output with Pima dataset from UCI Machine Learning DB
 <p align="center"><img width="80%" src="Dirichlet_graph.png" /></p>
 
 5. The accuracy when different attributes adding in SNB process
-6. <p align="center"><img width="80%" src="SNB_graph.png" /></p>
+<p align="center"><img width="80%" src="SNB_graph.png" /></p>
