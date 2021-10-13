@@ -231,9 +231,11 @@ class NBC(object):
       for attr_2 in outter_dict[class_1]:
         for value in range(0, 10):
           if value not in outter_dict[class_1][attr_2]:
-            outter_dict[class_1][attr_2][value] = prior / ((class_prob_pair[class_1] * train[index_attrs_class[-1]].count()) + (len(outter_dict[class_1][attr_2]) * prior))
+            outter_dict[class_1][attr_2][value] = prior / \
+            ((class_prob_pair[class_1] * train[index_attrs_class[-1]].count()) + (len(outter_dict[class_1][attr_2]) * prior))
           else:
-            outter_dict[class_1][attr_2][value] = (outter_dict[class_1][attr_2][value]+prior) / ((class_prob_pair[class_1] * train[index_attrs_class[-1]].count())+ (len(outter_dict[class_1][attr_2]) * prior))
+            outter_dict[class_1][attr_2][value] = (outter_dict[class_1][attr_2][value]+prior) / \
+            ((class_prob_pair[class_1] * train[index_attrs_class[-1]].count())+ (len(outter_dict[class_1][attr_2]) * prior))
     
     ##### start to input the testing data
     flag_list = [] # if element is 1, means true predict, else false, use it to calculate the accuracy
