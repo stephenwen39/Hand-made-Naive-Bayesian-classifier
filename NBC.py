@@ -8,12 +8,13 @@ class NBC(object):
 
   def __init__(self, f_num=5, cropus_root="/content/drive/MyDrive/4_Data/Glass/", file_="glass.data"):
     '''
-    import a particular data set at one class, so ww'll have to run at least 4 times 
+    import a particular data set at one class, so we will run it at least 4 times 
     (to generate new classes for different dataset)
     all of the data come from google drive
-
-    !!!!!!! class will located at -1 !!!!!!!!
-    !!!!!!! NOT CONSIDER MISSING VALUE !!!!!!!!
+    
+    WARNING:
+    1. class must located at last column
+    2. NOT CONSIDER MISSING VALUE
     '''
 
     self.path = cropus_root + file_# 待註解
@@ -24,7 +25,7 @@ class NBC(object):
     self.final_attr_list = [] # to store the attributes input aequence. i.e. [4, 11, 0]
     self.final_acc_list = [] # to store the accuracy of each loop in best case i.e. [0.7, 0.78, 0.89]
     
-    #####ATTRIBUTES & CLASS PREPARE below
+    ##### ATTRIBUTES & CLASS PREPARE below
     self.attributes_count = 0 # including class
     self.attribute_names = [] # bcuz we'll transfer the attributes name into int
     self.attributes_code_pairs = {} # "age":0, "sex":1, "class":2...
@@ -53,7 +54,7 @@ class NBC(object):
     
   def main(self):
     '''
-    This is the main function of this classifier, including fit() and test().
+    This is the main function of this classifier, it provide fit() and test() method.
     This function will return(or print) the accuracy of train state and test state.
     '''
     self.discretization() # return the value after discretization, process all of the continuous calumn
@@ -129,8 +130,8 @@ class NBC(object):
   def SNB(self):
     '''
     process:
-    1.use final list to store gerentee attrs and acc
-    2.use acc_list to store the test acc, and pick the max one as a member of final list
+    1. use final list to store gerentee attrs and acc
+    2. use acc_list to store the test acc, and pick the max one as a member of final list
     '''
 
     for loop in range(0, self.attributes_count-1): # not containing class
@@ -164,7 +165,7 @@ class NBC(object):
 
   def Dirichlet_prior_BC(self, best_attri_list):
     attri_list = best_attri_list#[ i for i in range(0, self.attributes_count-1)]
-    #print('目前陣列',attri_list)
+    # print('current array',attri_list)
     for prior in range(2, 61):
       ans = self.kFCV(attri_list, prior)
       self.prior_acc_dict[prior] = ans
@@ -172,8 +173,7 @@ class NBC(object):
     m_key = max(self.prior_acc_dict, key = self.prior_acc_dict.get)
     return m_key, self.prior_acc_dict[m_key]
 
-  def BC(self, test, train, att_count, prior): 
-    # must have the ability of unsort attrs, which is robust ability
+  def BC(self, test, train, att_count, prior): # 待更改，參數需打包再傳入
     '''
     process:
 
@@ -287,10 +287,10 @@ class NBC(object):
   def kFCV(self, attrslist, prior):
     '''
     process:
-    1. create a new df according the given attributes, with class data
-    2. do the 5 fold cv and calculate the avg accuracy with self.BC(test, train)
+    1. create a new df according the given attributes, with class data.
+    2. do the 5 fold cv and calculate the avg accuracy with self.BC(test, train).
     '''
-    #####1
+    ##### 1
     dflist = {} # create new df first
     for att in attrslist: # through all atributes in the current list (selected)
       templist = [] # the instences values of this attributes list 
@@ -304,7 +304,7 @@ class NBC(object):
     dflist[self.attributes_count-1] = templist # containing class data in the dict
     current_df = pd.DataFrame(dflist) # create a new df for these attributes with datas
 
-    #####2
+    ##### 2
     accuracy = []
     for index, value in enumerate(self.k_index):
       if index == 0:
